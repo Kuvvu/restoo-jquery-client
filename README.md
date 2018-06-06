@@ -2,7 +2,9 @@
 
 ## Installation
 
-Download restoo.js or clone this repository and include it after JQuery in your HTML File.
+Download restoo.js or clone this repository and include it after JQuery in your HTML File or use jsdelivr.net CDN
+
+<script src="https://cdn.jsdelivr.net/gh/kuvvu/restoo-jquery-client@stable/restoo.js"></script>
 
 ## Usage
 
