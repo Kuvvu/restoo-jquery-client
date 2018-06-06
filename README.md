@@ -1,28 +1,58 @@
-# PHP Client for Restoo API Server
+# jQuery Client for Restoo API Server
 
 ## Installation
 
-Install with Composer
-
-```
-composer require kuvvu/restoo-php-client
-```
+Download restoo.js or clone this repository and include it after JQuery in your HTML File.
 
 ## Usage
 
 Since Restoo is basically just a wrapper for MEDOO you can use the same Syntax as you would use for MEDOO (http://medoo.in)
+However in this Version only select, update and delete Funtions are implemented.
 
-```php
-<?php
+To create the Client use the following possible options:
+```
+{
+  api : "http://localhost:8080/",     <-- Your API Endpoint with trailing slash / Mandatory
+  auth: {                             <-- Auth Header / Optional
+    "X-Authentication" : "sometoken"
+  }
+}
+```
 
-require '../vendor/autoload.php';
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title></title>
+  </head>
+  <body>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="restoo.js"></script>
+    <script>
 
-use Restoo\Client;
+    /* Create RESTOO Client */
 
-$t = new Client([
-  'api' => '' // Your Restoo API URL
-]);
+    var Client = $.restoo({
+      api : "http://localhost:8080/",
+      auth: {
+        "X-Authentication" : "sometoken"
+      }
+    });
 
-$result = $t->select('tbl_module','*');
+    Client.select(
+      "tbl_module",
+      "*"
+    ).then(
+      function(data){
+        console.log(data)
+      }
+    );
 
+    </script>
+
+  </body>
+</html>
 ```
